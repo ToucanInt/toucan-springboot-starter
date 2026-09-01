@@ -34,14 +34,14 @@ public class TransactionService {
 
     Transaction transaction = transactionOptional.get();
 
-    if (!transaction.getTransactionStatus().equals("PENDING")) {
+    if (!"PENDING".equals(transaction.getTransactionStatus())) {
         throw new IllegalStateException(
                 "Transaction status cannot be changed from "
                         + transaction.getTransactionStatus());
     }
 
-    if (!transactionStatus.equals("COMPLETED")
-            && !transactionStatus.equals("FAILED")) {
+    if (!"COMPLETED".equals(transactionStatus)
+        && !"FAILED".equals(transactionStatus)) {
         throw new IllegalArgumentException(
                 "Invalid transaction status");
     }
